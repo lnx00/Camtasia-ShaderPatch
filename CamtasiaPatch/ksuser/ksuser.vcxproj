@@ -67,7 +67,7 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
-      <ModuleDefinitionFile>ksuser.def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>res/ksuser.def</ModuleDefinitionFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -88,7 +88,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
-      <ModuleDefinitionFile>ksuser.def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>res/ksuser.def</ModuleDefinitionFile>
     </Link>
     <PostBuildEvent>
       <Command>
@@ -101,13 +101,13 @@
     <ClCompile Include="src\DllMain.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="ksuser.def" />
+    <None Include="res\ksuser.def" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="resource.h" />
+    <ClInclude Include="res\resource.h" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="ksuser.rc" />
+    <ResourceCompile Include="res\ksuser.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
