@@ -1,0 +1,29 @@
+{
+    "code": "uniform float _XSpeed;\runiform float _YSpeed;\r\rvoid main(void) {\r    vec2 uv = _TexCoord * _ImageSize;\r\r    float gridSize = 15.0;\r    vec2 dotPos = fract((uv * gridSize) - vec2(_Time * _XSpeed, _Time * _YSpeed));\r\r    float dist = length(dotPos - 0.5);\r    float dot = smoothstep(0.02, 0.03, 0.05 - dist);\r\r    vec3 bgColor = vec3(0.1, 0.1, 0.1);\r    vec3 dotColor = vec3(1.0, 1.0, 1.0);\r\r    vec3 color = mix(bgColor, dotColor, dot);\r    _FragColor = vec4(color, 1.0);\r}\r",
+    "effectDef": [
+        {
+            "name": "XSpeed",
+            "type": "double",
+            "value": "1",
+            "valueBounds": {
+                "defaultValue": 0.5,
+                "maxValue": 1.0,
+                "minValue": -1.0
+            }
+        },
+        {
+            "name": "YSpeed",
+            "type": "double",
+            "value": "1",
+            "valueBounds": {
+                "defaultValue": 0.5,
+                "maxValue": 1.0,
+                "minValue": -1.0
+            }
+        }
+    ],
+    "width": 1920,
+    "height": 1080,
+    "name": "Dot Grid",
+    "version": 1.0
+}

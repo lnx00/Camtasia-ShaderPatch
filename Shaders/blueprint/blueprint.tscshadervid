@@ -1,0 +1,8 @@
+{
+    "code": "vec3 blueprint(vec2 uv) {\r    float lineWidth = 0.02;\r    float line = step(1.0 - lineWidth, abs(fract(uv.x) - 0.5) + abs(fract(uv.y) - 0.5));\r    return mix(vec3(0.0, 0.2, 0.6), vec3(1.0), line);\r}\r\rfloat vignette(vec2 uv) {\r    vec2 aspect = vec2(_ImageSize.x / _ImageSize.y, 1.0);\r    uv = (uv - 0.5) * aspect + 0.5;\r\r    float dist = length(uv - 0.5);\r    return smoothstep(1.5, 0.2, dist);\r}\r\rvoid main() {\r    vec2 uv = _TexCoord * (_ImageSize / _ImageSize.y);\r\r    // Move the pattern diagonally\r    uv -= _Time * 0.05;\r\r    // Scale the pattern to make it larger\r    uv *= 4.0;\r\r    // Get the blueprint color\r    vec3 color = blueprint(uv);\r\r    // Apply vignette effect\r    float vig = vignette(_TexCoord);\r    color *= vig;\r\r    _FragColor = vec4(color, 1.0);\r}",
+    "effectDef": [],
+    "width": 1920,
+    "height": 1080,
+    "name": "Blueprint",
+    "version": 1.0
+}
