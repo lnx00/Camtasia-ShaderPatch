@@ -3,27 +3,21 @@ import argparse
 import os
 
 
-def escape_string(s):
-    """Escape the string to fit into a JSON field"""
-    return (
-        s.replace("\\", "\\\\")
-        .replace('"', '\\"')
-        .replace("\n", "\\n")
-        .replace("\r", "\\r")
-    )
-
 def read_existing_json(filename):
     """Read and return JSON content from an existing file."""
     try:
-        with open(filename, 'r') as file:
+        with open(filename, "r") as file:
             return json.load(file)
     except IOError:
         return None
     except json.JSONDecodeError:
         return None
 
+
 def main():
-    parser = argparse.ArgumentParser(description="Process GLSL into the Camtasia Shader format.")
+    parser = argparse.ArgumentParser(
+        description="Process GLSL into the Camtasia Shader format."
+    )
     parser.add_argument("filename", help="Path to the input GLSL file")
     parser.add_argument("-name", help="Name field for the Shader")
     args = parser.parse_args()
